@@ -6,7 +6,6 @@ Titre Bac+3 de concepteur développeur d’applications du Ministère du Travail
 
 Cette formation se déroule entièrement en alternance (contrat d’apprentissage ou contrat de professionnalisation) sur un rythme de 1 mois en formation/1 mois en entreprise avec une période finale de 4 mois en entreprise.
 
-
 ### - Expert en développement logiciel. (Bac +5)
 Titre Bac+5 Manager de solutions digitales et data certifié par France Compétences, RNCP Niveau 7 en alternance.
 
@@ -92,10 +91,11 @@ EXERCICE 4
 
 EXERCICE 5 - Algorithmique, tris
 
-
-
 # Session Janvier
 # Session Mars - Avril
 # Session Mai - Juin
 
-<h1 align="center">Master</h1>
+<h1 align="center" style="color: red">Master</h1>
+<p style="color: red">à venir ...</p>
+
+<h3 align="center">© Teddy Establet - teddyestablet84@gmail.com</h3>
