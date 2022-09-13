@@ -1,5 +1,7 @@
-# Esimed
+<h1 align="center">Esimed</h1>
+
 ### - Bachelor Développement Web et Mobile. (Bac+3)
+
 Titre Bac+3 de concepteur développeur d’applications du Ministère du Travail, de l’emploi et de l’insertion, certifié par France Compétences – RNCP Niveau 6, notre Bachelor Développement Web et Mobile permet de passer de la mise en place à la conception à la réalisation de projets informatiques, autour de solutions web et mobiles.
 
 Cette formation se déroule entièrement en alternance (contrat d’apprentissage ou contrat de professionnalisation) sur un rythme de 1 mois en formation/1 mois en entreprise avec une période finale de 4 mois en entreprise.
@@ -14,8 +16,9 @@ Cette formation se déroule entièrement en alternance (contrat d’apprentissag
 
 Cette formation est réalisée en partenariat avec 3iL Ingénieurs, école d’ingénieurs habilitée par la Commission des Titres d’Ingénieur (CTI).
 
-# Session Bachelor
-# Projet 
+<h1 align="center">Bachelor</h1>
+
+# Projet
 ## Contraintes choix du sujet
 
 D'un point de vue théorique : Le sujet doit permettre de couvrir la quasi totalité des compétences listées à partir du chapitre 3.2 du document "Référentiel de Certification Concepteur Développeur d'Applications.pdf"
@@ -42,14 +45,14 @@ D'un point de vue théorique : Le sujet doit permettre de couvrir la quasi total
 
 + Mini twitter
 
-##  Mon projet : 
+##  Mon projet :
 
 ### EFM Connect
 La web-app EFM Connect à pour objectif de faciliter les gestions administratives, échanger entre agents et intégrer de nouveaux joueurs pour la société Euro Foot Management.
 
 Grâce à cette application, les agents EFM pourront échanger via un système de tchat sécurisé entre collaborateur et joueurs.
-La gestion administrative des différentes fiches des joueurs et des contrats proposé par la société n'aura jamais été aussi simple. 
-La base de donnée permettra aux agents EFM d'avoir en temps réel les derniers contrats, fiches des joueurs sous contrat. 
+La gestion administrative des différentes fiches des joueurs et des contrats proposé par la société n'aura jamais été aussi simple.
+La base de donnée permettra aux agents EFM d'avoir en temps réel les derniers contrats, fiches des joueurs sous contrat.
 
 À l'aide de cette application, les joueurs sous contrat avec EFM pourront échanger avec leurs agents concernant les modalités des contrats, les clubs intéressés ainsi que les prochains rendez-vous avec leurs agents vià un emploi du temps.
 
@@ -94,3 +97,5 @@ EXERCICE 5 - Algorithmique, tris
 # Session Janvier
 # Session Mars - Avril
 # Session Mai - Juin
+
+<h1 align="center">Master</h1>
