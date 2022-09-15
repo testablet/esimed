@@ -1,48 +1,25 @@
 package myapp.Stockable;
 
-public class ListOfStockable {
-    ListElementOfStockable head = null;
+public class List<T>{
+    ListElement<T> head = null;
 
-    public void addFirst(Stockable stock)
+    public void addFirst(T stock)
     {
-        ListElementOfStockable element = new ListElementOfStockable(stock);
+        ListElement<T> element = new ListElement(stock);
         element.setNextElement(head);
         head = element;
     }
 
-    public Stockable[] toArray()
+    public void add(T stock)
     {
-        // count number of elements
-        int count = 0;
-        ListElementOfStockable loopElement = head;
-        while (loopElement != null)
-        {
-            count = count + 1;
-            loopElement = loopElement.getNextElement();
-        }
-        // create array from list content
-        Stockable[] array = new Stockable[count];
-        int index = 0;
-        loopElement = head;
-        while (loopElement != null)
-        {
-            array[index] = loopElement.getData();
-            index = index + 1;
-            loopElement = loopElement.getNextElement();
-        }
-        return array;
-    }
-
-    public void add(Stockable stock)
-    {
-        ListElementOfStockable elementFin = new ListElementOfStockable(stock);
+        ListElement<T> elementFin = new ListElement<T>(stock);
         if(head==null)
         {
             head = elementFin;
         }
         else
         {
-            ListElementOfStockable findList = head;
+            ListElement<T> findList = head;
             while(findList.getNextElement()!=null)
             {
                 findList = findList.getNextElement();
@@ -51,9 +28,9 @@ public class ListOfStockable {
         }
     }
 
-    public boolean contains(Stockable data)
+    public boolean contains(T data)
     {
-        ListElementOfStockable listElement = head;
+        ListElement<T> listElement = head;
         while((listElement!=null))
         {
             if(listElement.getData().equals(data))
@@ -65,9 +42,9 @@ public class ListOfStockable {
         return false;
     }
 
-    public Stockable findFirst(Stockable data) {
+    public T findFirst(T data) {
 
-        ListElementOfStockable listElement = head;
+        ListElement<T> listElement = head;
         while (listElement != null) {
             if (listElement.getData().equals(data)) {
                 return data;
@@ -79,14 +56,14 @@ public class ListOfStockable {
         return null;
     }
 
-    public void delete(Stockable data)
+    public void delete(T data)
     {
         //cas où l'élement à supprimer est la tête de la liste.
         if (head.getData().equals(data)){
             if (head.getNextElement()!= null){
-                ListElementOfStockable tmp = head.getNextElement();
+                ListElement<T> tmp = head.getNextElement();
                 head = null;
-                head = new ListElementOfStockable(tmp.getData());
+                head = new ListElement<T>(tmp.getData());
                 head.setNextElement(tmp.getNextElement());
             }
             else{
@@ -96,12 +73,12 @@ public class ListOfStockable {
 
         //cas où l'élément est au milieu de la liste.
         else{
-            ListElementOfStockable currentElement = head;
+            ListElement<T> currentElement = head;
             while(currentElement!= null){
                 if((currentElement.getNextElement()!=null)&&
                         (currentElement.getNextElement().data.equals(data))){
                     if(currentElement.getNextElement().getNextElement()!=null){
-                        ListElementOfStockable tmp = currentElement.getNextElement()
+                        ListElement<T> tmp = currentElement.getNextElement()
                                 .getNextElement();
                         currentElement.getNextElement().setNextElement(null);
                         currentElement.setNextElement(tmp);
@@ -117,11 +94,11 @@ public class ListOfStockable {
             }
         }
     }
-    public ListElementOfStockable getHead() {
+    public ListElement<T> getHead() {
         return head;
     }
 
-    public void setHead(ListElementOfStockable head) {
+    public void setHead(ListElement<T> head) {
         this.head = head;
     }
 }
