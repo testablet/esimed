@@ -1,13 +1,16 @@
 package myapp.tools;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import myapp.tools.ProcessFile;
+
+import myapp.Stockable.List;
 
 public class TextFileTools {
-
-    public static String readWord(FileReader reader) {
+    public static String readWord(FileReader reader)
+    {
         StringBuilder stringBuilder = new StringBuilder();
         if (reader.isEndOfFile()) return null;
         int charCount = 0;
@@ -48,9 +51,33 @@ public class TextFileTools {
         return compteurNombreMots;
     }
 
-    public static void walkDirectory(String NomRepertoire, ProcessFile processFile) throws IOException {
+    public static void walkDirectory(String NomRepertoire, ProcessFile processFile) throws IOException
+    {
         Files.walk(Paths.get(NomRepertoire))
                 .filter(Files::isRegularFile)
                 .forEach(processFile::process);
+    }
+
+    public static List<String> readFile(FileReader reader)
+    {
+        List<String> list = new List();
+
+        while (!reader.isEndOfFile())
+        {
+            list.add(readWord(reader));
+        }
+        return list;
+    }
+
+    public static  List<List<String>> readDirectory(String nomRepertoire) throws IOException {
+        List<List<String>> listeDeListe = new List<>();
+
+        walkDirectory(nomRepertoire, (path) -> {
+            List<String> liste = new List<>();
+            liste = readFile((new FileReader(path.toString(), Charset.forName("Windows-1252"))));
+            listeDeListe.add(liste);
+        });
+
+        return listeDeListe;
     }
 }

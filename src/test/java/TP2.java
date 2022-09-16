@@ -1,4 +1,6 @@
 import myapp.Stockable.*;
+import myapp.tools.FileReader;
+import myapp.tools.TextFileTools;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -160,6 +162,19 @@ public class TP2 {
         list.add("World");
         list.add("!");
         it.restart();
+        Assertions.assertEquals(true, it.hasNext());
+        Assertions.assertEquals("Hello", it.next());
+        Assertions.assertEquals(true, it.hasNext());
+        Assertions.assertEquals("World", it.next());
+        Assertions.assertEquals(true, it.hasNext());
+        Assertions.assertEquals("!", it.next());
+        Assertions.assertEquals(false, it.hasNext());
+    }
+
+    @Test
+    public void exo3() throws EndOfListException {
+        List<String> list = TextFileTools.readFile(FileReader.fromString("Hello,\n\r World !"));
+        Iterator<String> it = new Iterator<String>(list);
         Assertions.assertEquals(true, it.hasNext());
         Assertions.assertEquals("Hello", it.next());
         Assertions.assertEquals(true, it.hasNext());

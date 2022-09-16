@@ -1,8 +1,11 @@
 package myapp.Stockable;
 
+import java.util.LinkedList;
+
 public class ListElement<T>{
     T data;
     ListElement<T> NextElement = null;
+    ListElement<T> PreviousElement = null;
 
     public ListElement(T data) {
         this.data = data;
@@ -22,5 +25,13 @@ public class ListElement<T>{
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public ListElement<T> getPreviousElement() {
+        return PreviousElement;
+    }
+
+    public void setPreviousElement(ListElement<T> previousElement) {
+        PreviousElement = previousElement;
     }
 }
