@@ -183,4 +183,48 @@ public class TP2 {
         Assertions.assertEquals("!", it.next());
         Assertions.assertEquals(false, it.hasNext());
     }
+
+    @Test
+    public void exo5() throws EndOfListException {
+        List<Integer> list = new List<Integer>();
+        list.add(8);
+        list.add(5);
+        list.add(1);
+        list.add(2);
+        list.add(9);
+        list.add(3);
+        list.add(4);
+        Iterator<Integer> it = new Iterator<Integer>(list);
+        Assertions.assertEquals(8, it.next());
+        Assertions.assertEquals(5, it.next());
+        Assertions.assertEquals(1, it.next());
+        Assertions.assertEquals(2, it.next());
+        Assertions.assertEquals(9, it.next());
+        Assertions.assertEquals(3, it.next());
+        Assertions.assertEquals(4, it.next());
+        list.sort(Integer::compareTo);
+        it.restart();
+        Assertions.assertEquals(1, it.next());
+        Assertions.assertEquals(2, it.next());
+        Assertions.assertEquals(3, it.next());
+        Assertions.assertEquals(4, it.next());
+        Assertions.assertEquals(5, it.next());
+        Assertions.assertEquals(8, it.next());
+        Assertions.assertEquals(9, it.next());
+        list = new List<Integer>();
+        list.add(1);
+        list.add(3);
+        list.add(4);
+        list.add(8);
+        list.add(5);
+        list.add(9);
+        list.sort(Integer::compareTo);
+        it = new Iterator<Integer>(list);
+        Assertions.assertEquals(1, it.next());
+        Assertions.assertEquals(3, it.next());
+        Assertions.assertEquals(4, it.next());
+        Assertions.assertEquals(5, it.next());
+        Assertions.assertEquals(8, it.next());
+        Assertions.assertEquals(9, it.next());
+    }
 }

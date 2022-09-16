@@ -11,20 +11,14 @@ public class ListElement<T>{
         this.data = data;
     }
 
-    public ListElement<T> getNextElement() {
+    public ListElement<T> getNextElement()
+    {
         return NextElement;
     }
 
-    public void setNextElement(ListElement<T> NextElement) {
+    public void setNextElement(ListElement<T> NextElement)
+    {
         this.NextElement = NextElement;
-    }
-
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
     }
 
     public ListElement<T> getPreviousElement() {
@@ -33,5 +27,12 @@ public class ListElement<T>{
 
     public void setPreviousElement(ListElement<T> previousElement) {
         PreviousElement = previousElement;
+    }
+
+    public T getData() {
+        return data;
+    }
+    public void setData(T data) {
+        this.data = data;
     }
 }

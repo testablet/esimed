@@ -1,39 +1,47 @@
 package myapp.Stockable;
 
+import java.util.Comparator;
+
 public class List<T>{
     ListElement<T> head = null;
 
     public void addFirst(T stock)
     {
-        ListElement<T> element = new ListElement(stock);
-        element.setNextElement(head);
-        head = element;
+        ListElement<T> newElement = new ListElement<T>(stock);
+        if (head == null) { // empty list
+            head = newElement;
+        } else {
+            // add new elemement at the start of the list (replace 'head')
+            ListElement<T> nextElement = head;
+            head = newElement;
+            newElement.setNextElement(nextElement);
+            nextElement.setPreviousElement(newElement);
+        }
     }
 
     public void add(T stock)
     {
-        ListElement<T> elementFin = new ListElement<T>(stock);
-        if(head==null)
-        {
-            head = elementFin;
-        }
-        else
-        {
-            ListElement<T> findList = head;
-            while(findList.getNextElement()!=null)
-            {
-                findList = findList.getNextElement();
+        ListElement<T> newElement = new ListElement<T>(stock);
+        if (head == null) { // empty list
+            head = newElement;
+        } else {
+            // search for the end of the list
+            ListElement<T> loopElement = head;
+            while (loopElement.getNextElement() != null) {
+                loopElement = loopElement.getNextElement();
             }
-            findList.setNextElement(elementFin);
+            // add new element at the end of the list
+            loopElement.setNextElement(newElement);
+            newElement.setPreviousElement(loopElement);
         }
     }
 
-    public boolean contains(T data)
+    public boolean contains(T stock)
     {
         ListElement<T> listElement = head;
         while((listElement!=null))
         {
-            if(listElement.getData().equals(data))
+            if(listElement.getData().equals(stock))
             {
                 return true;
             }
@@ -56,49 +64,64 @@ public class List<T>{
         return null;
     }
 
-    public void delete(T data)
+    public void delete(T stock)
     {
         //cas où l'élement à supprimer est la tête de la liste.
-        if (head.getData().equals(data)){
-            if (head.getNextElement()!= null){
-                ListElement<T> tmp = head.getNextElement();
-                head = null;
-                head = new ListElement<T>(tmp.getData());
-                head.setNextElement(tmp.getNextElement());
-            }
-            else{
-                head = null;
-            }
-        }
-
-        //cas où l'élément est au milieu de la liste.
-        else{
-            ListElement<T> currentElement = head;
-            while(currentElement!= null){
-                if((currentElement.getNextElement()!=null)&&
-                        (currentElement.getNextElement().data.equals(data))){
-                    if(currentElement.getNextElement().getNextElement()!=null){
-                        ListElement<T> tmp = currentElement.getNextElement()
-                                .getNextElement();
-                        currentElement.getNextElement().setNextElement(null);
-                        currentElement.setNextElement(tmp);
-                        break;
-                    }
-                    //cas où l'élément est le dernier de la liste;
-                    else{
-                        currentElement.setNextElement(null);
-                        break;
-                    }
+        ListElement<T> loopElement = head;
+        ListElement<T> previousElement = null;
+        while (loopElement != null) {
+            if (loopElement.getData().equals(stock)) {
+                if (previousElement == null) { // element to delete is the first element (head)
+                    head = head.getNextElement();
+                    head.setPreviousElement(null);
+                } else { // remove element by dropping it from the chain
+                    previousElement.setNextElement(loopElement.getNextElement());
+                    loopElement.getNextElement().setPreviousElement(previousElement);
                 }
-                currentElement = currentElement.getNextElement();
+                return;
             }
+            previousElement = loopElement;
+            loopElement = loopElement.getNextElement();
         }
-    }
+        }
     public ListElement<T> getHead() {
         return head;
     }
 
     public void setHead(ListElement<T> head) {
         this.head = head;
+    }
+
+    public void sort(Comparator<? super T> comparator) {
+        ListElement<T> loopElement = head;
+        while (loopElement.getNextElement() != null) {
+            ListElement<T> min = loopElement;
+            ListElement<T> innerLoopElement = loopElement.getNextElement();
+            while (innerLoopElement != null) {
+                if (comparator.compare(innerLoopElement.getData(), min.getData()) < 0) {
+                    min = innerLoopElement;
+                }
+                innerLoopElement = innerLoopElement.getNextElement();
+            }
+            if (min != loopElement) {
+                ListElement<T> prevCurrent = loopElement.getPreviousElement();
+                ListElement<T> nextMin = min.getNextElement();
+                ListElement<T> prevMin = min.getPreviousElement();
+                min.setNextElement(loopElement);
+                min.setPreviousElement(prevCurrent);
+                loopElement.setPreviousElement(min);
+                prevMin.setNextElement(nextMin);
+                if (nextMin != null) nextMin.setPreviousElement(prevMin);
+                if (prevCurrent == null) {
+                    head = min;
+                } else {
+                    prevCurrent.setNextElement(min);
+                    loopElement.setPreviousElement(min);
+                }
+
+            } else {
+                loopElement = loopElement.getNextElement();
+            }
+        }
     }
 }
