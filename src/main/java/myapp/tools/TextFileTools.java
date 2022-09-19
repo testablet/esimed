@@ -12,7 +12,7 @@ public class TextFileTools {
     public static String readWord(FileReader reader)
     {
         StringBuilder stringBuilder = new StringBuilder();
-        if (reader.isEndOfFile()) return null;
+        if (reader.isEndOfFile()) {return null;}
         int charCount = 0;
         char c = reader.readChar();
         while ((' ' != c) &&
@@ -69,13 +69,13 @@ public class TextFileTools {
         return list;
     }
 
-    public static  List<List<String>> readDirectory(String nomRepertoire) throws IOException {
+    public static  List<List<String>> readDirectory(String nomRepertoire) throws IOException
+    {
         List<List<String>> listeDeListe = new List<>();
 
-        walkDirectory(nomRepertoire, (path) -> {
-            List<String> liste = new List<>();
-            liste = readFile((new FileReader(path.toString(), Charset.forName("Windows-1252"))));
-            listeDeListe.add(liste);
+        walkDirectory(nomRepertoire, (path) ->
+        {
+            listeDeListe.add(readFile((new FileReader(path.toString(), Charset.forName("Windows-1252")))));
         });
 
         return listeDeListe;

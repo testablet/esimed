@@ -3,7 +3,7 @@ package myapp.Stockable;
 import java.util.Comparator;
 
 public class List<T>{
-    ListElement<T> head = null;
+    private ListElement<T> head = null;
 
     public void addFirst(T stock)
     {

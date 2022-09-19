@@ -1,16 +1,16 @@
 package myapp.searchEngine;
 
+import java.net.URI;
+
 public class TreeNode {
-    String word="";
-    TreeNode leftChild=null;
-    TreeNode rightChild=null;
+    private String word="";
+    public TreeNode leftChild = null;
+    public TreeNode rightChild = null;
     private String filesList;
 
-    public TreeNode(String word, TreeNode leftChild, TreeNode rightChild)
+    public TreeNode(String word)
     {
         this.word = word;
-        this.leftChild = leftChild;
-        this.rightChild = rightChild;
     }
 
     public String getWord()
