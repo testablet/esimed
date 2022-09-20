@@ -1,4 +1,4 @@
-import com.sun.source.tree.Tree;
+import myapp.searchEngine.Tree;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

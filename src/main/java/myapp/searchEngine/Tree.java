@@ -1,34 +1,63 @@
 package myapp.searchEngine;
+import myapp.Stockable.List;
+
+import java.util.function.Consumer;
 
 public class Tree {
+    // Membre privé
+    private TreeNode head = null;
 
-    Tree head;
-    TreeNode node = null;
+    // Constructeurs
     public void insert(String word, String fileName)
     {
-        insertTree(word, fileName,node);
+        insertTree(word, fileName, head);
     }
 
+    // Get / Set
+    public TreeNode getHead() {
+        return head;
+    }
+    public void setHead(TreeNode head) {
+        this.head = head;
+    }
+
+    // Méthodes
     private TreeNode insertTree(String word, String fileName, TreeNode node)
     {
         if(node == null)
         {
-            node = new TreeNode(word);
+            List<String> list = new List<>();
+            list.add(fileName);
+            node = new TreeNode(word, list);
             return node;
         }
-        else if(word.compareTo(node.getWord())<0)
+        if(word.compareTo(node.getWord()) < 0)
         {
-            node.leftChild = insertTree(word, fileName, node.leftChild);
+            node.setLeftChild(insertTree(word, fileName, node.getLeftChild()));
         }
-        else if(word.compareTo(node.getWord())>0)
+        else if(word.compareTo(node.getWord()) > 0)
         {
-            node.rightChild = insertTree(word, fileName, node.rightChild);
+            node.setRightChild(insertTree(word, fileName, node.getRightChild()));
         }
         else
         {
-            node.add
+            node.getList().add(fileName);
         }
         return node;
     }
 
+    private void walk(Consumer<TreeNode> process)
+    {
+        walkTree(process, head);
+    }
+    private void  walkTree(Consumer<TreeNode> consumerTreeNode, TreeNode treeNode)
+    {
+        if(treeNode.getLeftChild() != null){
+            walkTree(consumerTreeNode, treeNode.getLeftChild());
+        }
+        consumerTreeNode.accept(treeNode);
+        if(treeNode.getRightChild() != null){
+            walkTree(consumerTreeNode, treeNode.getRightChild());
+        }
+    }
 }

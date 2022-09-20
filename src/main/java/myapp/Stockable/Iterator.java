@@ -1,8 +1,8 @@
 package myapp.Stockable;
 
 public class Iterator<T>{
-    ListElement<T> listElement;
-    List<T> list;
+    private ListElement<T> listElement;
+    private List<T> list;
     public Iterator(List<T> list) {
         this.list = list;
         restart();

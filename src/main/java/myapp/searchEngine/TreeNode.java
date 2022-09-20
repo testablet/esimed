@@ -1,16 +1,20 @@
 package myapp.searchEngine;
 
+import myapp.Stockable.List;
+
 import java.net.URI;
 
 public class TreeNode {
-    private String word="";
-    public TreeNode leftChild = null;
-    public TreeNode rightChild = null;
+    private String word;
+    private TreeNode leftChild = null;
+    private TreeNode rightChild = null;
     private String filesList;
+    private List<String> list = new List<>();
 
-    public TreeNode(String word)
+    public TreeNode(String word, List<String> list)
     {
         this.word = word;
+        this.list = list;
     }
 
     public String getWord()
@@ -44,5 +48,13 @@ public class TreeNode {
 
     public void setFilesList(String filesList) {
         this.filesList = filesList;
+    }
+
+    public List<String> getList() {
+        return list;
+    }
+
+    public void setList(List<String> list) {
+        this.list = list;
     }
 }
