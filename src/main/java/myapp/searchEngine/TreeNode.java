@@ -8,13 +8,12 @@ public class TreeNode {
     private String word;
     private TreeNode leftChild = null;
     private TreeNode rightChild = null;
-    private String filesList;
-    private List<String> list = new List<>();
+    private List<String> filesList = new List<>();
 
-    public TreeNode(String word, List<String> list)
+    public TreeNode(String word, String fileList)
     {
         this.word = word;
-        this.list = list;
+        addFilesList(fileList);
     }
 
     public String getWord()
@@ -42,19 +41,11 @@ public class TreeNode {
         this.rightChild = rightChild;
     }
 
-    public String getFilesList() {
+    public List<String> getFilesList() {
         return filesList;
     }
 
-    public void setFilesList(String filesList) {
-        this.filesList = filesList;
-    }
-
-    public List<String> getList() {
-        return list;
-    }
-
-    public void setList(List<String> list) {
-        this.list = list;
+    public void addFilesList(String filesList) {
+        this.filesList.add(filesList);
     }
 }

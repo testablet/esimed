@@ -10,15 +10,12 @@ public class Tree {
     // Constructeurs
     public void insert(String word, String fileName)
     {
-        insertTree(word, fileName, head);
+        head = insertTree(word, fileName, head);
     }
 
     // Get / Set
     public TreeNode getHead() {
         return head;
-    }
-    public void setHead(TreeNode head) {
-        this.head = head;
     }
 
     // Méthodes
@@ -26,10 +23,7 @@ public class Tree {
     {
         if(node == null)
         {
-            List<String> list = new List<>();
-            list.add(fileName);
-            node = new TreeNode(word, list);
-            return node;
+            return new TreeNode(word, fileName);
         }
         if(word.compareTo(node.getWord()) < 0)
         {
@@ -41,7 +35,7 @@ public class Tree {
         }
         else
         {
-            node.getList().add(fileName);
+            node.addFilesList(fileName);
         }
         return node;
     }
